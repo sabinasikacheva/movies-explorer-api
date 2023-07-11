@@ -1,23 +1,18 @@
 require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
 const router = require('./routes');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const limiter = require('./middlewares/requestsLimiter');
 
 const app = express();
 
 app.use(cors());
-
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // за 15 минут
-  max: 100, // можно совершить максимум 100 запросов с одного IP
-});
 
 mongoose.connect('mongodb://127.0.0.1:27017/bitfilmsdb');
 
@@ -26,6 +21,10 @@ app.use(helmet());
 
 app.use(express.json());
 app.use(requestLogger);
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
