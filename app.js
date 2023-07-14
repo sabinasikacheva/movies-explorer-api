@@ -10,11 +10,13 @@ const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const limiter = require('./middlewares/requestsLimiter');
 
+const { PORT = 3000, MONGO_URL } = process.env;
+
 const app = express();
 
 app.use(cors());
 
-mongoose.connect('mongodb://127.0.0.1:27017/bitfilmsdb');
+mongoose.connect(MONGO_URL);
 
 app.use(limiter);
 app.use(helmet());
@@ -35,6 +37,6 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('Server is running on port 3000');
 });

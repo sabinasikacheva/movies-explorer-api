@@ -46,12 +46,12 @@ const updateUser = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь не найден');
       }
-      // res.send({ user });
-      res.send({
-        id: user.id,
-        email,
-        name,
-      });
+      res.send({ user });
+      // res.send({
+      //   id: user.id,
+      //   email,
+      //   name,
+      // });
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
