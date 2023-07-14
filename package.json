@@ -1,0 +1,38 @@
+{
+  "name": "movies-explorer-api",
+  "version": "1.0.0",
+  "description": "Данный проект является дипломной работой на курсе веб-разработчик Яндекс.Практикума",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "author": "Sabina Sikacheva",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "celebrate": "^15.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.44.0",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.7.1",
+    "express-winston": "^4.2.0",
+    "helmet": "^7.0.0",
+    "joi": "^17.9.2",
+    "jsonwebtoken": "^9.0.1",
+    "limiter": "^2.1.0",
+    "mongoose": "^7.3.2",
+    "validator": "^13.9.0",
+    "winston": "^3.9.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "nodemon": "^3.0.0"
+  }
+}
