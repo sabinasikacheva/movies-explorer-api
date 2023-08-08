@@ -13,11 +13,34 @@ const getAllMovies = (req, res, next) => {
 };
 
 const createMovie = (req, res, next) => {
-  movieModel
-    .create({
-      owner: req.user._id,
-      ...req.body,
-    })
+  const {
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    nameRU,
+    nameEN,
+    thumbnail,
+    movieId,
+  } = req.body;
+  const owner = req.user._id;
+  movieModel.create({
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    nameRU,
+    nameEN,
+    thumbnail,
+    movieId,
+    owner,
+  })
     .then((movie) => {
       res.status(201).send(movie);
     })
