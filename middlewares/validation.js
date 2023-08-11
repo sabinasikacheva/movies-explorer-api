@@ -1,6 +1,6 @@
 const { celebrate, Joi } = require('celebrate');
 
-const URL_REGEX = /^https?:\/\/(www\.)?[a-zA-Z\0-9]+\.[\w\-._~:/?#[\]@!$&'()*+,;=]{2,}#?$/;
+// const URL_REGEX = /^https?:\/\/(www\.)?[a-zA-Z\0-9]+\.[\w\-._~:/?#[\]@!$&'()*+,;=]{2,}#?$/;
 
 // POST /signup
 const validationUserRegister = celebrate({
@@ -28,21 +28,21 @@ const validationUpdateUser = celebrate({
 });
 
 // POST /movies
-const validationCreateMovie = celebrate({
-  body: Joi.object().keys({
-    country: Joi.string().required(),
-    director: Joi.string().required(),
-    duration: Joi.number().required(),
-    year: Joi.string().required(),
-    description: Joi.string().required(),
-    image: Joi.string().required().pattern(URL_REGEX),
-    trailerLink: Joi.string().required().pattern(URL_REGEX),
-    thumbnail: Joi.string().required().pattern(URL_REGEX),
-    movieId: Joi.number().required(),
-    nameRU: Joi.string().required(),
-    nameEN: Joi.string().required(),
-  }),
-});
+// const validationCreateMovie = celebrate({
+//   body: Joi.object().keys({
+//     country: Joi.string().required(),
+//     director: Joi.string().required(),
+//     duration: Joi.number().required(),
+//     year: Joi.string().required(),
+//     description: Joi.string().required(),
+//     image: Joi.string().required().pattern(URL_REGEX),
+//     trailerLink: Joi.string().required().pattern(URL_REGEX),
+//     thumbnail: Joi.string().required().pattern(URL_REGEX),
+//     movieId: Joi.number().required(),
+//     nameRU: Joi.string().required(),
+//     nameEN: Joi.string().required(),
+//   }),
+// });
 
 // DELETE /movies/:movieId
 const validationIdMovie = celebrate({
@@ -55,6 +55,6 @@ module.exports = {
   validationUserRegister,
   validationUserAuth,
   validationUpdateUser,
-  validationCreateMovie,
+  // validationCreateMovie,
   validationIdMovie,
 };
