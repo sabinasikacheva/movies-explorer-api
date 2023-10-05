@@ -13,11 +13,10 @@ const getAllMovies = (req, res, next) => {
 };
 
 const createMovie = (req, res, next) => {
-  movieModel
-    .create({
-      owner: req.user._id,
-      ...req.body,
-    })
+  movieModel.create({
+    owner: req.user._id,
+    ...req.body,
+  })
     .then((movie) => {
       res.status(201).send(movie);
     })
